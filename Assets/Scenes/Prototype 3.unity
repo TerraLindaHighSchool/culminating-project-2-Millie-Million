@@ -604,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7169122e91e1981469b2b6045ddf7963, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7169122e91e1981469b2b6045ddf7963, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -642,6 +642,12 @@ MonoBehaviour:
   gravityModifier: 1.8
   isOnGround: 1
   gameOver: 0
+  applePrefab: {fileID: 8453789745888659435, guid: ab6397a785b2d1e4287a2f341e90f54b,
+    type: 3}
+  bonePrefab: {fileID: 2217983467268799320, guid: 095380e8c60b7094e84c0a45115f8253,
+    type: 3}
+  carrotPrefab: {fileID: 4418695382370714815, guid: a3bceba7458b7144cbc4f7bcc2bd8a83,
+    type: 3}
   explosionParticle: {fileID: 1738386754}
   dirtParticle: {fileID: 600409732}
   jumpSound: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
@@ -908,7 +914,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &835818922
 MonoBehaviour:

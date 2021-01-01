@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Ground
   - Obstacle
+  - Money
+  - Bomb
+  - Food
+  - Doe
+  - Fox
+  - Stag
   layers:
   - Default
   - TransparentFX

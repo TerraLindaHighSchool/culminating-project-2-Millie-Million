@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveForward : MonoBehaviour
+public class MoveRight : MonoBehaviour
 {
-    public float speed = 30;
+    public float speed = 5;
     private PlayerController playerControllerScript;
-    private float leftBound = -15.0f;
+    private float rightBound = 25.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,12 @@ public class MoveForward : MonoBehaviour
     {
         if (playerControllerScript.gameOver == false)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
-        if (gameObject.CompareTag("Stag") && transform.position.x < leftBound || gameObject.CompareTag("Doe") && transform.position.x < leftBound || gameObject.CompareTag("Fox") && transform.position.x < leftBound )
+
+        if (transform.position.x > rightBound && gameObject.CompareTag("Food"))
         {
             Destroy(gameObject);
         }
     }
 }
- 

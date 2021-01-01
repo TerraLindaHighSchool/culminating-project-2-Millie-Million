@@ -6,9 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     public float jumpForce = 10.0f;
+    private Vector3 foodSpawnPos;
     public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver = false;
+    public GameObject applePrefab;
+    public GameObject bonePrefab;
+    public GameObject carrotPrefab;
     private Animator playerAnim;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
@@ -28,6 +32,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foodSpawnPos = transform.position + new Vector3(0, 1.5f, 0);
+        FireFood();
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -35,6 +41,27 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetBool("Jump_b", true);
             dirtParticle.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
+        }
+    }
+
+    private void FireFood()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !gameOver)
+        {
+            Debug.Log("Apple");
+            Instantiate(applePrefab, foodSpawnPos, applePrefab.transform.rotation);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && !gameOver)
+        {
+            Debug.Log("Carrot");
+            Instantiate(carrotPrefab, foodSpawnPos, carrotPrefab.transform.rotation);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && !gameOver)
+        {
+            Debug.Log("Bone");
+            Instantiate(bonePrefab, foodSpawnPos, bonePrefab.transform.rotation);
         }
     }
 
@@ -46,7 +73,7 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetBool("Jump_b", false);
             dirtParticle.Play();
         }
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Fox") || collision.gameObject.CompareTag("Doe") || collision.gameObject.CompareTag("Stag"))
         {
             gameOver = true;
             playerAnim.SetBool("Death_b", true);

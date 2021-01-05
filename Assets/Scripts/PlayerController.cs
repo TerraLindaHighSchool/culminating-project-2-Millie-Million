@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         foodSpawnPos = transform.position + new Vector3(0, 1.5f, 0);
         FireFood();
+        ButtonMash();
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -48,20 +49,55 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && !gameOver)
         {
-            Debug.Log("Apple");
             Instantiate(applePrefab, foodSpawnPos, applePrefab.transform.rotation);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && !gameOver)
         {
-            Debug.Log("Carrot");
             Instantiate(carrotPrefab, foodSpawnPos, carrotPrefab.transform.rotation);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && !gameOver)
         {
-            Debug.Log("Bone");
             Instantiate(bonePrefab, foodSpawnPos, bonePrefab.transform.rotation);
+        }
+    }
+
+    private void ButtonMash()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //Nothing
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            //Nothing
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            //Nothing
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Input.GetKeyDown(KeyCode.Alpha2) && Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            //Nothing
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            //Nothing
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //Nothing
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            //Nothing
         }
     }
 

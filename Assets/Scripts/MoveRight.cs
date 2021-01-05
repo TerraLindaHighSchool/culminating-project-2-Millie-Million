@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveRight : MonoBehaviour
 {
-    public float speed = 5;
+    private float speed = 50;
     private PlayerController playerControllerScript;
     private float rightBound = 25.0f;
 

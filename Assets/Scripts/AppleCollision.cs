@@ -24,13 +24,21 @@ public class AppleCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Stag"))
         {
-            appleAudio.PlayOneShot(happyEat, 1.0f);
+            AudioSource.PlayClipAtPoint(happyEat, this.gameObject.transform.position);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
-        else
+        
+        if (collision.gameObject.CompareTag("Doe"))
         {
-            appleAudio.PlayOneShot(sadEat, 1.0f);
+            AudioSource.PlayClipAtPoint(sadEat, this.gameObject.transform.position);
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Fox"))
+        {
+            AudioSource.PlayClipAtPoint(sadEat, this.gameObject.transform.position);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

@@ -42,5 +42,11 @@ public class CarrotCollision : MonoBehaviour
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            AudioSource.PlayClipAtPoint(sadEat, this.gameObject.transform.position);
+            Destroy(gameObject);
+        }
     }
 }

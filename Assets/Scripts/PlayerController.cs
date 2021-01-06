@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject applePrefab;
     public GameObject bonePrefab;
     public GameObject carrotPrefab;
+    public GameObject canPrefab;
     private Animator playerAnim;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
@@ -60,6 +61,11 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(bonePrefab, foodSpawnPos, bonePrefab.transform.rotation);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4) && !gameOver)
+        {
+            Instantiate(canPrefab, foodSpawnPos, canPrefab.transform.rotation);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -78,6 +84,7 @@ public class PlayerController : MonoBehaviour
             explosionParticle.Play();
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
+            transform.position = new Vector3(0, 0, 0);
         }
     }
 }

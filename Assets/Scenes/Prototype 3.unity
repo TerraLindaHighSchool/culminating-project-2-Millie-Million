@@ -813,6 +813,8 @@ MonoBehaviour:
     type: 3}
   carrotPrefab: {fileID: 4418695382370714815, guid: a3bceba7458b7144cbc4f7bcc2bd8a83,
     type: 3}
+  canPrefab: {fileID: 8048375995278262852, guid: 74c1a1e8d6c56c84fb2187325775e342,
+    type: 3}
   explosionParticle: {fileID: 1738386754}
   dirtParticle: {fileID: 600409732}
   jumpSound: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
@@ -997,6 +999,7 @@ MonoBehaviour:
   - {fileID: 6905296394579063875, guid: 85b7142ca2555af46b009ba757b60dc4, type: 3}
   - {fileID: 2178018980934630818, guid: 728685a7b486bca438fee12e1d094d5f, type: 3}
   - {fileID: 4846363364149740794, guid: 15d9ab09792c6a3418e7908d5524dd83, type: 3}
+  - {fileID: 5516642011760966015, guid: dfebbe9079215ac4bbb1b6c6e160ab90, type: 3}
 --- !u!1 &835818919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1213,7 @@ RectTransform:
   m_GameObject: {fileID: 1740791389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 1, z: 1}
+  m_LocalScale: {x: 3.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 564044184}
   m_RootOrder: 0
@@ -1239,7 +1242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 1406bfdeec4facd44b0dbd5bcaba5d6a, type: 3}
+  m_Texture: {fileID: 2800000, guid: f6a1afbd209746e4f92d53deb5691ec5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Perp : MonoBehaviour
 {
+    private Animator perpAnim;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        perpAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,9 +24,10 @@ public class Perp : MonoBehaviour
         {
             //Nothing
         }
-        else
+        
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            perpAnim.SetInteger("Speed_f", 0);
         }
     }
 }

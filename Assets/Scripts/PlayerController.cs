@@ -74,7 +74,10 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
             playerAnim.SetBool("Jump_b", false);
-            dirtParticle.Play();
+            if (!gameOver)
+            {
+                dirtParticle.Play();
+            }
         }
         else if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Fox") || collision.gameObject.CompareTag("Doe") || collision.gameObject.CompareTag("Stag"))
         {

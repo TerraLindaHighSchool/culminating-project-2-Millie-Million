@@ -43,7 +43,7 @@ public class AppleCollision : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Perp"))
         {
             AudioSource.PlayClipAtPoint(sadEat, this.gameObject.transform.position);
             Destroy(gameObject);

@@ -7,6 +7,7 @@ public class CanCollision : MonoBehaviour
     private AudioSource canAudio;
     public AudioClip happyEat;
     public AudioClip sadEat;
+    public GameObject obstaclePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,10 @@ public class CanCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Perp"))
         {
             AudioSource.PlayClipAtPoint(happyEat, this.gameObject.transform.position);
+            Instantiate(obstaclePrefab, collision.gameObject.transform.position, obstaclePrefab.transform.rotation);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
                 dirtParticle.Play();
             }
         }
-        else if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Fox") || collision.gameObject.CompareTag("Doe") || collision.gameObject.CompareTag("Stag"))
+        else if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Fox") || collision.gameObject.CompareTag("Doe") || collision.gameObject.CompareTag("Stag") || collision.gameObject.CompareTag("Perp"))
         {
             gameOver = true;
             playerAnim.SetBool("Death_b", true);

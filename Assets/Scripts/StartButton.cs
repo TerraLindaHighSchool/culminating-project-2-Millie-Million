@@ -8,6 +8,7 @@ public class StartButton : MonoBehaviour
     private Button button;
     public GameObject titleScreen;
     private PlayerController playerControllerScript;
+    public GameObject spawnManager;
 
     // Start is called before the first frame update
     void Start()
@@ -27,5 +28,6 @@ public class StartButton : MonoBehaviour
     {
         playerControllerScript.StartGame();
         titleScreen.gameObject.SetActive(false);
+        spawnManager.gameObject.SetActive(true);
     }
 }

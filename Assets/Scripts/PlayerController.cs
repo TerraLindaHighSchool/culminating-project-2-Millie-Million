@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    public float jumpForce = 10.0f;
+    public float jumpForce = 600.0f;
     private Vector3 foodSpawnPos;
-    public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver = false;
-    public bool startGame = false;
+    public static bool startGame = false;
     public GameObject applePrefab;
     public GameObject bonePrefab;
     public GameObject carrotPrefab;
@@ -22,15 +21,27 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip crashSound;
     private AudioSource playerAudio;
-    public Button RespawnButton;
-
+    public GameObject gameOverScreen;
+    
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityModifier;
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
+        startGame = false;
+        dirtParticle.gameObject.SetActive(false);
+        playerAnim.SetFloat("Speed_f", 0.0f);
+    }
+
+    public void StartGame()
+    {
+        startGame = true;
+    }
+
+    public bool GetStartGame()
+    {
+        return startGame;
     }
 
     // Update is called once per frame
@@ -38,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         if (startGame == true)
         {
+            dirtParticle.gameObject.SetActive(true);
+            playerAnim.SetFloat("Speed_f", 0.6f);
             foodSpawnPos = transform.position + new Vector3(0, 1.5f, 0);
             FireFood();
             if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
@@ -93,19 +106,15 @@ public class PlayerController : MonoBehaviour
             else if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Fox") || collision.gameObject.CompareTag("Doe") || collision.gameObject.CompareTag("Stag") || collision.gameObject.CompareTag("Perp"))
             {
                 gameOver = true;
+                startGame = false;
                 playerAnim.SetBool("Death_b", true);
                 playerAnim.SetInteger("DeathType_int", 1);
                 explosionParticle.Play();
                 dirtParticle.Stop();
                 playerAudio.PlayOneShot(crashSound, 1.0f);
                 transform.position = new Vector3(0, 0, 0);
-                RespawnButton.gameObject.SetActive(true);
+                gameOverScreen.gameObject.SetActive(true);
             }
         }
-    }
-
-    public void StartGame()
-    {
-        //startGame = true;
     }
 }

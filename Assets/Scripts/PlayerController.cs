@@ -26,16 +26,22 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private int score;
     private static int level;
-
+    private GameObject playerControllerScript;
+    public Camera MainCamera;
+    private MusicPlayer musicPlayer;
+    
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
+        musicPlayer = MainCamera.GetComponent<MusicPlayer>();
         startGame = false;
         dirtParticle.gameObject.SetActive(false);
         playerAnim.SetFloat("Speed_f", 0.0f);
+        level = 1;
+        Level();
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -51,6 +57,7 @@ public class PlayerController : MonoBehaviour
         scoreText.text = "Score: " + score;
         UpdateScore(0);
         level = 1;
+        Level();
     }
 
     public bool GetStartGame()
@@ -61,6 +68,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Level();
         if (startGame == true)
         {
             dirtParticle.gameObject.SetActive(true);
@@ -137,16 +145,19 @@ public class PlayerController : MonoBehaviour
         if (score < 25)
         {
             level = 1;
+            musicPlayer.PlayMusic();
         }
 
-        if (score >= 25 && score < 50)
+        if (score >= 25 && score < 60)
         {
             level = 2;
+            musicPlayer.PlayMusic();
         }
 
-        if (score >= 50)
+        if (score >= 60)
         {
             level = 3;
+            musicPlayer.PlayMusic();
         }
     }
 

@@ -8,11 +8,13 @@ public class CanCollision : MonoBehaviour
     public AudioClip happyEat;
     public AudioClip sadEat;
     public GameObject obstaclePrefab;
+    private PlayerController playerControllerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         canAudio = GetComponent<AudioSource>();
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class CanCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Doe"))
         {
             AudioSource.PlayClipAtPoint(sadEat, this.gameObject.transform.position);
+            playerControllerScript.UpdateScore(-5);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
@@ -41,6 +44,7 @@ public class CanCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Stag"))
         {
             AudioSource.PlayClipAtPoint(sadEat, this.gameObject.transform.position);
+            playerControllerScript.UpdateScore(-5);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
@@ -48,6 +52,7 @@ public class CanCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Fox"))
         {
             AudioSource.PlayClipAtPoint(sadEat, this.gameObject.transform.position);
+            playerControllerScript.UpdateScore(-5);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

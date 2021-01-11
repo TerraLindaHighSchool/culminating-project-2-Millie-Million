@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip crashSound;
     private AudioSource playerAudio;
     public GameObject gameOverScreen;
-    
+    public TextMeshProUGUI scoreText;
+    private int score;
+    private static int level;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +38,19 @@ public class PlayerController : MonoBehaviour
         playerAnim.SetFloat("Speed_f", 0.0f);
     }
 
+    public void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score;
+    }
+
     public void StartGame()
     {
         startGame = true;
+        score = 0;
+        scoreText.text = "Score: " + score;
+        UpdateScore(0);
+        level = 1;
     }
 
     public bool GetStartGame()
@@ -116,5 +130,28 @@ public class PlayerController : MonoBehaviour
                 gameOverScreen.gameObject.SetActive(true);
             }
         }
+    }
+
+    private void Level()
+    {
+        if (score < 25)
+        {
+            level = 1;
+        }
+
+        if (score >= 25 && score < 50)
+        {
+            level = 2;
+        }
+
+        if (score >= 50)
+        {
+            level = 3;
+        }
+    }
+
+    public int GetLevel()
+    {
+        return level;
     }
 }

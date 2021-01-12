@@ -13,6 +13,7 @@ TagManager:
   - Fox
   - Stag
   - Perp
+  - PowerUp
   layers:
   - Default
   - TransparentFX

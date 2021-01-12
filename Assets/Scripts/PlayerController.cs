@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem dirtParticle;
     public AudioClip jumpSound;
     public AudioClip crashSound;
+    public AudioClip powerUpSound;
     private AudioSource playerAudio;
     public GameObject gameOverScreen;
     public TextMeshProUGUI scoreText;
@@ -29,7 +30,10 @@ public class PlayerController : MonoBehaviour
     private GameObject playerControllerScript;
     public Camera MainCamera;
     private MusicPlayer musicPlayer;
-    
+    public bool hasPowerup = false;
+    public GameObject powerupIndicator;
+    private float powerupStrength = 1.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,13 @@ public class PlayerController : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7);
+        hasPowerup = false;
+        powerupIndicator.gameObject.SetActive(false);
     }
 
     public void StartGame()
@@ -75,9 +86,18 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetFloat("Speed_f", 0.6f);
             foodSpawnPos = transform.position + new Vector3(0, 1.5f, 0);
             FireFood();
-            if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+            powerupIndicator.transform.position = transform.position + new Vector3(0.5f, 3.2f, 0);
+            if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver && !hasPowerup)
             {
                 playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
+                playerAnim.SetBool("Jump_b", true);
+                dirtParticle.Stop();
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver && hasPowerup)
+            {
+                playerRb.AddForce(Vector3.up * jumpForce * powerupStrength, ForceMode.Impulse);
                 isOnGround = false;
                 playerAnim.SetBool("Jump_b", true);
                 dirtParticle.Stop();
@@ -137,6 +157,18 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(0, 0, 0);
                 gameOverScreen.gameObject.SetActive(true);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PowerUp"))
+        {
+            Destroy(other.gameObject);
+            hasPowerup = true;
+            powerupIndicator.gameObject.SetActive(true);
+            StartCoroutine(PowerupCountdownRoutine());
+            playerAudio.PlayOneShot(powerUpSound, 1.0f);
         }
     }
 

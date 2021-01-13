@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MillieButton1 : MonoBehaviour
+public class MomButton : MonoBehaviour
 {
     private Button button;
     public GameObject millie;
@@ -14,7 +14,7 @@ public class MillieButton1 : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(MillieOn);
+        button.onClick.AddListener(MomOn);
     }
 
     // Update is called once per frame
@@ -23,10 +23,10 @@ public class MillieButton1 : MonoBehaviour
         
     }
 
-    private void MillieOn()
+    private void MomOn()
     {
         dad.gameObject.SetActive(false);
-        mom.gameObject.SetActive(false);
-        millie.gameObject.SetActive(true);
+        millie.gameObject.SetActive(false);
+        mom.gameObject.SetActive(true);
     }
 }

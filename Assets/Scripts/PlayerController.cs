@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         startGame = false;
         dirtParticle.gameObject.SetActive(false);
         playerAnim.SetFloat("Speed_f", 0.0f);
-        level = 1;
+        level = 0;
         Level();
     }
 
@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Level();
+
         if (startGame == true)
         {
             dirtParticle.gameObject.SetActive(true);
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
             foodSpawnPos = transform.position + new Vector3(0, 1.5f, 0);
             FireFood();
             powerupIndicator.transform.position = transform.position + new Vector3(0.5f, 3.2f, 0);
+
             if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver && !hasPowerup)
             {
                 playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -174,7 +176,13 @@ public class PlayerController : MonoBehaviour
 
     private void Level()
     {
-        if (score < 25)
+        if (score < 25 && !startGame)
+        {
+            level = 0;
+            musicPlayer.PlayMusic();
+        }
+
+        if (score < 25 && startGame)
         {
             level = 1;
             musicPlayer.PlayMusic();

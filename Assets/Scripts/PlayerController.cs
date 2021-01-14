@@ -117,22 +117,22 @@ public class PlayerController : MonoBehaviour
     {
         if (startGame == true)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && !gameOver)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && !gameOver || Input.GetKeyDown(KeyCode.Keypad1) && !gameOver)
             {
                 Instantiate(applePrefab, foodSpawnPos, applePrefab.transform.rotation);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && !gameOver)
+            if (Input.GetKeyDown(KeyCode.Alpha2) && !gameOver || Input.GetKeyDown(KeyCode.Keypad2) && !gameOver)
             {
                 Instantiate(carrotPrefab, foodSpawnPos, carrotPrefab.transform.rotation);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha3) && !gameOver)
+            if (Input.GetKeyDown(KeyCode.Alpha3) && !gameOver || Input.GetKeyDown(KeyCode.Keypad3) && !gameOver)
             {
                 Instantiate(bonePrefab, foodSpawnPos, bonePrefab.transform.rotation);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha4) && !gameOver)
+            if (Input.GetKeyDown(KeyCode.Alpha4) && !gameOver || Input.GetKeyDown(KeyCode.Keypad4) && !gameOver)
             {
                 Instantiate(canPrefab, foodSpawnPos, canPrefab.transform.rotation);
             }

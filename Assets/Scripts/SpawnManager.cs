@@ -52,7 +52,7 @@ public class SpawnManager : MonoBehaviour
 
                 if (playerControllerScript.GetLevel() == 3)
                 {
-                    Instantiate(obstaclePrefabs3[obstacleIndex3], spawnPos, obstaclePrefabs2[obstacleIndex2].transform.rotation);
+                    Instantiate(obstaclePrefabs3[obstacleIndex3], spawnPos, obstaclePrefabs2[obstacleIndex3].transform.rotation);
                 }
             }
         }

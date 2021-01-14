@@ -7,7 +7,9 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    public float jumpForce = 600.0f;
+    //Force of the player's jump
+    private float jumpForce = 395.0f;
+    //Where to throw the food from on the player
     private Vector3 foodSpawnPos;
     public bool isOnGround = true;
     public bool gameOver = false;
@@ -27,10 +29,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private int score;
     private static int level;
-    private GameObject playerControllerScript;
     public Camera MainCamera;
     private MusicPlayer musicPlayer;
-    public bool hasPowerup = false;
+    private bool hasPowerup = false;
     public GameObject powerupIndicator;
     private float powerupStrength = 1.5f;
 
@@ -48,19 +49,22 @@ public class PlayerController : MonoBehaviour
         Level();
     }
 
+    //Updates the score (usually with 5 or -5)
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
     }
 
+    //Once the player has a powerup, it only lasts for 10 seconds before going away
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(10);
         hasPowerup = false;
         powerupIndicator.gameObject.SetActive(false);
     }
 
+    //When the start button is pressed, the score resets and the level is set to 1
     public void StartGame()
     {
         startGame = true;
@@ -76,7 +80,7 @@ public class PlayerController : MonoBehaviour
         return startGame;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame (checks level, plays particles, checks fire food, sets animation, implements player jump)
     void Update()
     {
         Level();
@@ -108,6 +112,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //If the respective key is pressed, fires apples, carrots, bones, and sodas
     private void FireFood()
     {
         if (startGame == true)
@@ -134,6 +139,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //If the player lands on thr ground, turns on dirt animation, if the player collides with an obstacle, animal, or perp, ends game
     private void OnCollisionEnter(Collision collision)
     {
         if (startGame == true)
@@ -162,6 +168,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //If the player collides with a powerup, sets powerup to true, starts coroutine, and turns on powerup indicator
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PowerUp"))
@@ -174,6 +181,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //checks score and sets level accordingly
     private void Level()
     {
         if (score < 25 && !startGame)

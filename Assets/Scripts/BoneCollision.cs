@@ -5,7 +5,9 @@ using UnityEngine;
 public class BoneCollision : MonoBehaviour
 {
     private AudioSource boneAudio;
+    //cronch sound
     public AudioClip happyEat;
+    //bzzt sound
     public AudioClip sadEat;
     private PlayerController playerControllerScript;
 
@@ -22,6 +24,7 @@ public class BoneCollision : MonoBehaviour
         
     }
 
+    //Checks what the bone has collided with, removes the bone and whatever it collided with, and plays the appropriate sound.
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Fox"))

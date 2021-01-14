@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    public float speed = 30;
+    public float speed = 20;
     private PlayerController playerControllerScript;
 
     // Start is called before the first frame update
@@ -13,7 +13,7 @@ public class MoveForward : MonoBehaviour
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
+    // Update is called once per frame (move forward)
     void Update()
     {
         if (playerControllerScript.gameOver == false)

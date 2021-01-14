@@ -5,14 +5,14 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     private PlayerController playerControllerScript;
+    //Forest Ambience audio source
     public AudioSource music0;
+    //Afternoon music audio source
     public AudioSource music1;
+    //Evening music audio source
     public AudioSource music2;
+    //Music of the Night audio source
     public AudioSource music3;
-    public AudioClip level0;
-    public AudioClip level1;
-    public AudioClip level2;
-    public AudioClip level3;
     private bool music0IsPlaying = false;
     private bool music1IsPlaying = false;
     private bool music2IsPlaying = false;
@@ -32,6 +32,7 @@ public class MusicPlayer : MonoBehaviour
         
     }
 
+    //Depending on what level it is, different music plays. The forest ambience plays throughout
     public void PlayMusic()
     {
         if (playerControllerScript.GetLevel() == 0 && ! music0IsPlaying)
@@ -52,10 +53,8 @@ public class MusicPlayer : MonoBehaviour
             music1IsPlaying = true;
             music2.Stop();
             music3.Stop();
-            music0.Stop();
             music2IsPlaying = false;
             music3IsPlaying = false;
-            music0IsPlaying = false;
         }
 
         if (playerControllerScript.GetLevel() == 2 && !music2IsPlaying)

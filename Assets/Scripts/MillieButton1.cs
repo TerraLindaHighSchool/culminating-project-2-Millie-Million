@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class MillieButton1 : MonoBehaviour
 {
     private Button button;
+    //The Cultural Character
     public GameObject millie;
+    //The Law Enforcement Character
     public GameObject dad;
+    //The Cadet Character
     public GameObject mom;
 
     // Start is called before the first frame update
@@ -23,6 +26,7 @@ public class MillieButton1 : MonoBehaviour
         
     }
 
+    //Sets the Cultural Character to active and the other two to inactive.
     private void MillieOn()
     {
         dad.gameObject.SetActive(false);

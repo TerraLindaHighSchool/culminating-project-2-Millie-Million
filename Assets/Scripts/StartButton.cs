@@ -24,6 +24,7 @@ public class StartButton : MonoBehaviour
         
     }
 
+    //When this button is clicked, it calls the PlayerController StartGame() function, deactivates the title screen, and activates to spawn manager to start spawning obstacles
     private void StartGame()
     {
         playerControllerScript.StartGame();

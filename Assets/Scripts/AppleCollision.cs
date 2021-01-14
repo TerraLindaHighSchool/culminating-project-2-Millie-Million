@@ -5,7 +5,9 @@ using UnityEngine;
 public class AppleCollision : MonoBehaviour
 {
     private AudioSource appleAudio;
+    //cronch sound
     public AudioClip happyEat;
+    //bzzt sound
     public AudioClip sadEat;
     private PlayerController playerControllerScript;
 
@@ -22,6 +24,7 @@ public class AppleCollision : MonoBehaviour
         
     }
 
+    //Checks what the apple has collided with, removes the apple and whatever it collided with, and plays the appropriate sound.
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Stag"))

@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class DadButton : MonoBehaviour
 {
     private Button button;
+    //The Law Enforcement Character
     public GameObject dad;
+    //The Cultural Character
     public GameObject millie;
+    //the Cadet Character
     public GameObject mom;
 
     // Start is called before the first frame update
@@ -23,6 +26,7 @@ public class DadButton : MonoBehaviour
         
     }
 
+    //Sets the Law Enforcement Character to active and the other two to inactive.
     private void DadOn()
     {
         dad.gameObject.SetActive(true);

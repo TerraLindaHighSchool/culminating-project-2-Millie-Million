@@ -5,7 +5,9 @@ using UnityEngine;
 public class CarrotCollision : MonoBehaviour
 {
     private AudioSource carrotAudio;
+    //cronch sound
     public AudioClip happyEat;
+    //bzzt sound
     public AudioClip sadEat;
     private PlayerController playerControllerScript;
 
@@ -22,6 +24,7 @@ public class CarrotCollision : MonoBehaviour
         
     }
 
+    //Checks what the carrot has collided with, removes the carrot and whatever it collided with, and plays the appropriate sound.
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Doe"))

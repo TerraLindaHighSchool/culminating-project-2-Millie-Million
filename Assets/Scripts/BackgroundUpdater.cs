@@ -6,8 +6,11 @@ public class BackgroundUpdater : MonoBehaviour
 {
     private PlayerController playerControllerScript;
     private SpriteRenderer background;
+    // The afternoon forest scene
     public Sprite level1;
+    // The evening forest scene
     public Sprite level2;
+    //The night forest scene
     public Sprite level3;
 
     // Start is called before the first frame update
@@ -18,7 +21,7 @@ public class BackgroundUpdater : MonoBehaviour
         background.sprite = level1;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame (Changes the background to correspond with the level)
     void Update()
     {
         if (playerControllerScript.GetLevel() == 1)

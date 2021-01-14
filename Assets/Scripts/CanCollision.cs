@@ -5,7 +5,9 @@ using UnityEngine;
 public class CanCollision : MonoBehaviour
 {
     private AudioSource canAudio;
+    //cronch sound
     public AudioClip happyEat;
+    //bzzt sound
     public AudioClip sadEat;
     public GameObject obstaclePrefab;
     private PlayerController playerControllerScript;
@@ -23,6 +25,7 @@ public class CanCollision : MonoBehaviour
 
     }
 
+    //Checks what the can has collided with, removes the can and whatever it collided with, and plays the appropriate sound.
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Perp"))

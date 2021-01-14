@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    //level 1 obstacle list
     public GameObject[] obstaclePrefabs1;
+    //level 2 obstacle list
     public GameObject[] obstaclePrefabs2;
+    //level 3 obstacle list
     public GameObject[] obstaclePrefabs3;
+    //Obstacle spawn point
     private Vector3 spawnPos = new Vector3(25, 0.72f, 0);
     private float startDelay = 2.0f;
     private float repeatRate = 2.0f;
@@ -25,6 +29,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    //Depending on what level it is, spawns a random obstacle from the list every 3 seconds
     private void SpawnRandomObstacle()
     {
         int obstacleIndex1 = Random.Range(0, obstaclePrefabs1.Length);

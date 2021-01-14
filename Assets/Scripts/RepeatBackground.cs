@@ -5,6 +5,7 @@ using UnityEngine;
 public class RepeatBackground : MonoBehaviour
 {
     private Vector3 startPos;
+    //How far to move before it repeats
     private float repeatWidth;
 
     // Start is called before the first frame update
@@ -14,7 +15,7 @@ public class RepeatBackground : MonoBehaviour
         repeatWidth = GetComponent<BoxCollider>().size.x / 2;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame (if it goes too far, it repeats)
     void Update()
     {
         if (transform.position.x < startPos.x - repeatWidth)

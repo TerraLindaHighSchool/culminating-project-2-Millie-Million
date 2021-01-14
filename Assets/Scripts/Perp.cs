@@ -15,7 +15,7 @@ public class Perp : MonoBehaviour
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
+    // Update is called once per frame (move forward, not walking)
     void Update()
     {
         if (playerControllerScript.gameOver == false)

@@ -22,6 +22,7 @@ public class RespawnButton : MonoBehaviour
         
     }
 
+    //Reloads the scene
     private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
